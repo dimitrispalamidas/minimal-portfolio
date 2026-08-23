@@ -27,7 +27,9 @@ export function Projects() {
   }, [language])
 
   const filteredProjects =
-    activeCategory === "all" ? projects : projects.filter((project) => project.category === activeCategory)
+    activeCategory === "all"
+      ? projects
+      : projects.filter((project) => project.categories.includes(activeCategory))
 
   return (
     <section id="projects" className="py-20 bg-gray-50 dark:bg-gray-900">

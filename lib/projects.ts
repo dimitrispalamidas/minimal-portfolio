@@ -4,7 +4,7 @@ export type Project = {
   title: string
   description: { en: string; el: string }
   image?: string
-  category: ProjectCategory
+  categories: ProjectCategory[]
   tags: { en: string[]; el: string[] }
   demoLink?: string
   githubLink?: string
@@ -18,7 +18,7 @@ export const projects: Project[] = [
       el: "AI travel πλατφόρμα: ο επισκέπτης περιγράφει το ταξίδι, παίρνει κάρτες εμπειριών από locals και κλείνει. Σε συνεργασία με τον Δημήτρη Κουντάνη — chatbot, booking UX και AI που μένει στις ζητούμενες ημερομηνίες.",
     },
     image: "/gtlw.png",
-    category: "ai",
+    categories: ["ai"],
     tags: {
       en: ["Next.js", "AI Chat", "Stripe", "Booking"],
       el: ["Next.js", "AI Chat", "Stripe", "Κρατήσεις"],
@@ -32,7 +32,7 @@ export const projects: Project[] = [
       el: "Πλατφόρμα προϋπολογισμών έργων υποδομής: budgets, τιμολόγια, κλίμακες τιμών, PDF, οργανισμοί και δικαιώματα. Κύρια συνεισφορά σε budgets, onboarding και permissions.",
     },
     image: "/qbonet.png",
-    category: "business",
+    categories: ["ai", "business"],
     tags: {
       en: ["Next.js", "Budgets", "PDF", "AI Copilot"],
       el: ["Next.js", "Προϋπολογισμοί", "PDF", "AI Copilot"],
@@ -46,7 +46,7 @@ export const projects: Project[] = [
       el: "AI τηλεφωνικό κέντρο ανά οργανισμό: εισερχόμενη κλήση Twilio, OpenAI Realtime voice agent, RAG βάση γνώσης και μεταφορά σε άνθρωπο όταν χρειάζεται.",
     },
     image: "/call-agent.png",
-    category: "ai",
+    categories: ["ai"],
     tags: {
       en: ["Twilio", "OpenAI Realtime", "RAG", "Supabase"],
       el: ["Twilio", "OpenAI Realtime", "RAG", "Supabase"],
@@ -61,7 +61,7 @@ export const projects: Project[] = [
       el: "Πλατφόρμα βραχυχρόνιας μίσθωσης με δύο surfaces: marketing για ιδιοκτήτες και booking για επισκέπτες. Supabase, Viva Wallet, ημερολόγια και EL/EN.",
     },
     image: "/messinian-stays.png",
-    category: "webapp",
+    categories: ["webapp"],
     tags: {
       en: ["Next.js", "Booking", "Viva Wallet", "Supabase"],
       el: ["Next.js", "Κρατήσεις", "Viva Wallet", "Supabase"],
@@ -76,7 +76,7 @@ export const projects: Project[] = [
       el: "E-shop παιδικών ρούχων και βαπτιστικών στην Καλαμάτα: κατάλογος, πληρωμές, αποστολές και admin panel.",
     },
     image: "/tinkerbell-live.png",
-    category: "ecommerce",
+    categories: ["ecommerce"],
     tags: {
       en: ["Next.js", "E-commerce", "Payments", "Admin"],
       el: ["Next.js", "E-shop", "Πληρωμές", "Admin"],
@@ -91,7 +91,7 @@ export const projects: Project[] = [
       el: "Brand site στρωμάτων και κρεβατιών στο Παγκράτι: editorial κατάλογος, EL/EN και τοπικό SEO.",
     },
     image: "/enjoy-sleep.png",
-    category: "landing",
+    categories: ["landing"],
     tags: {
       en: ["Next.js", "Brand site", "Catalog", "EL/EN"],
       el: ["Next.js", "Brand site", "Κατάλογος", "EL/EN"],
@@ -106,7 +106,7 @@ export const projects: Project[] = [
       el: "PWA για τη θεωρητική εξέταση ΚΟΚ: εξάσκηση ανά ενότητα, mock διαγωνίσματα με χρόνο, streaks και κατάταξη.",
     },
     image: "/kok-theoria.png",
-    category: "webapp",
+    categories: ["webapp"],
     tags: {
       en: ["Next.js", "PWA", "Supabase", "Exams"],
       el: ["Next.js", "PWA", "Supabase", "Διαγωνίσματα"],
@@ -121,7 +121,7 @@ export const projects: Project[] = [
       el: "Dashboard μισθοδοσίας για ΕΡΓΑΝΗ / SafeCard: κάρτες εργαζομένων, ώρες και ροές συμμόρφωσης.",
     },
     image: "/ergani.png",
-    category: "webapp",
+    categories: ["webapp"],
     tags: {
       en: ["Next.js", "Dashboard", "ΕΡΓΑΝΗ", "HR"],
       el: ["Next.js", "Dashboard", "ΕΡΓΑΝΗ", "HR"],
@@ -136,7 +136,7 @@ export const projects: Project[] = [
       el: "Προϊόν για επιχείρηση τοιχοποιίας: πελάτες, προσφορές, τιμολόγια και εξαγωγή PDF. Next.js και Supabase.",
     },
     image: "/lazos.png",
-    category: "business",
+    categories: ["business"],
     tags: {
       en: ["Next.js", "Supabase", "Quotes", "PDF"],
       el: ["Next.js", "Supabase", "Προσφορές", "PDF"],
@@ -149,7 +149,7 @@ export const projects: Project[] = [
       el: "Οικονομικό σύστημα για ατομική επιχείρηση: βιβλία ΑΑΔΕ myDATA, ΦΠΑ, φόρος εισοδήματος, μηνιαίος προϋπολογισμός και σύνδεση τραπεζών. Μόνο screenshot — όχι δημόσιο demo.",
     },
     image: "/mydata.png",
-    category: "business",
+    categories: ["business"],
     tags: {
       en: ["Next.js", "AADE myDATA", "VAT", "Banking"],
       el: ["Next.js", "ΑΑΔΕ myDATA", "ΦΠΑ", "Τράπεζες"],
