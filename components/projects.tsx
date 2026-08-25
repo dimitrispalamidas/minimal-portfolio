@@ -39,7 +39,7 @@ export function Projects() {
             </div>
             <div className="p-6 flex flex-col flex-1">
               <p className="text-xs font-medium uppercase tracking-wide text-gray-500 dark:text-gray-400 mb-2">
-                {language === "en" ? "Day job" : "Ημερήσια δουλειά"}
+                {language === "en" ? "Day job" : "Full-time"}
               </p>
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">CloudFin</h3>
               <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
@@ -48,7 +48,7 @@ export function Projects() {
                   : "AI για το ελληνικό δημόσιο: ΑΑΔΕ, ΥΠΕΣ, Δικαιοσύνη, Κτηματολόγιο."}
               </p>
               <span className="mt-auto text-lg font-medium text-gray-900 dark:text-white group-hover:underline">
-                {language === "en" ? "View programs →" : "Δείτε τα προγράμματα →"}
+                {language === "en" ? "View programs →" : "Δες τα προγράμματα →"}
               </span>
             </div>
           </Link>
@@ -81,10 +81,10 @@ export function Projects() {
               <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
                 {language === "en"
                   ? "AI products I ship myself — including CallAgent — plus shops, booking, and brand sites."
-                  : "AI προϊόντα που φτιάχνω εγώ — μαζί και το CallAgent — και καταστήματα, κρατήσεις, brand sites."}
+                  : "AI προϊόντα που φτιάχνω μόνος μου, όπως το CallAgent, μαζί με e-shops, συστήματα κρατήσεων και brand sites."}
               </p>
               <span className="mt-auto text-lg font-medium text-gray-900 dark:text-white group-hover:underline">
-                {language === "en" ? "View products →" : "Δείτε τα προϊόντα →"}
+                {language === "en" ? "View products →" : "Δες τα προϊόντα →"}
               </span>
             </div>
           </Link>

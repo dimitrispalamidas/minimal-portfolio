@@ -13,11 +13,11 @@ export function Resume() {
     {
       title: "Full Stack & AI Engineer",
       company: "CloudFin",
-      period: language === "en" ? "12/2025 - Present" : "12/2025 - Παρόν",
+      period: language === "en" ? "12/2025 - Present" : "12/2025 - Σήμερα",
       description:
         language === "en"
           ? "I own AADE and YPES in production. I also contribute on Justice and Cadastre digitization."
-          : "Έχω την ΑΑΔΕ και το ΥΠΕΣ σε production. Παράλληλα συνεισφέρω στην ψηφιοποίηση Δικαιοσύνης και Κτηματολογίου.",
+          : "Είμαι υπεύθυνος για την ΑΑΔΕ και το ΥΠΕΣ, που τρέχουν σε production. Παράλληλα συνεισφέρω στην ψηφιοποίηση για τη Δικαιοσύνη και το Κτηματολόγιο.",
       href: "/work/cloudfin",
     },
     {
@@ -27,16 +27,16 @@ export function Resume() {
       description:
         language === "en"
           ? "Built enterprise Angular applications with Telerik Kendo UI for document workflows, data-heavy grids, and API integrations on CloudFin's B2B finance platform."
-          : "Έφτιαξα enterprise Angular εφαρμογές με Telerik Kendo UI για document workflows, βαριά data grids και API integrations στην B2B finance πλατφόρμα της CloudFin.",
+          : "Ανέπτυξα enterprise εφαρμογές σε Angular με Telerik Kendo UI για ροές διαχείρισης εγγράφων, grids με μεγάλο όγκο δεδομένων και integrations με APIs, πάνω στη B2B finance πλατφόρμα της CloudFin.",
     },
     {
       title: "Full Stack Developer",
-      company: language === "en" ? "Self-employed" : "Αυτοαπασχολούμενος",
-      period: language === "en" ? "11/2023 - Present" : "11/2023 - Παρόν",
+      company: language === "en" ? "Self-employed" : "Ελεύθερος επαγγελματίας",
+      period: language === "en" ? "11/2023 - Present" : "11/2023 - Σήμερα",
       description:
         language === "en"
           ? "End-to-end freelance across AI products, e-commerce, booking, contractor tools, and brand sites."
-          : "Freelance end-to-end σε AI προϊόντα, e-commerce, κρατήσεις, εργαλεία εργολάβου και brand sites.",
+          : "Freelance έργα από την αρχή ως το τέλος: AI προϊόντα, e-shops, συστήματα κρατήσεων, εργαλεία για εργολάβους και brand sites.",
     },
   ]
 
@@ -51,7 +51,7 @@ export function Resume() {
       description:
         language === "en"
           ? "7-month vocational boot camp. Certificate in Computer Software."
-          : "7μηνο boot camp. Πιστοποιητικό Πληροφορικής.",
+          : "Εντατικό επαγγελματικό πρόγραμμα επτά μηνών. Πιστοποιητικό στην Πληροφορική.",
     },
     {
       degree: language === "en" ? "BSc, Merchant Marine Officer" : "Πτυχίο Αξιωματικού Εμπορικού Ναυτικού",

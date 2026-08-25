@@ -71,10 +71,10 @@ export function WorkIndex({ lane = "all" }: { lane?: "all" | "personal" }) {
             {personalOnly
               ? language === "en"
                 ? "Work I ship freelance."
-                : "Δουλειά που φτιάχνω freelance."
+                : "Έργα που αναλαμβάνω freelance."
               : language === "en"
                 ? "CloudFin is the day job. Everything else is freelance."
-                : "Η CloudFin είναι η ημερήσια δουλειά. Τα υπόλοιπα είναι freelance."}
+                : "Η CloudFin είναι η κύρια δουλειά μου. Όλα τα υπόλοιπα είναι freelance."}
           </p>
         </motion.div>
 
@@ -83,7 +83,7 @@ export function WorkIndex({ lane = "all" }: { lane?: "all" | "personal" }) {
             <div className="flex items-center gap-3 mb-8">
               <h2 className="text-2xl font-bold text-gray-900 dark:text-white">CloudFin</h2>
               <span className="text-xs font-medium uppercase tracking-wide text-gray-500 dark:text-gray-400">
-                {language === "en" ? "Day job" : "Ημερήσια δουλειά"}
+                {language === "en" ? "Day job" : "Full-time"}
               </span>
             </div>
             {cloudFin.map((project, index) => (
