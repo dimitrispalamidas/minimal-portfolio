@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion"
 import { Download, Briefcase, GraduationCap } from "lucide-react"
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { useLanguage } from "./language-provider"
 
@@ -10,31 +11,32 @@ export function Resume() {
 
   const experiences = [
     {
-      title: language === "en" ? "Full Stack & AI Engineer" : "Full Stack & AI Engineer",
+      title: "Full Stack & AI Engineer",
       company: "CloudFin",
       period: language === "en" ? "12/2025 - Present" : "12/2025 - Παρόν",
       description:
         language === "en"
-          ? "Designing production Vision-to-Data pipelines with Vertex AI and LLM workflows. Building Python/FastAPI services for asynchronous document processing and React validation interfaces for human-in-the-loop quality control."
-          : "Σχεδιάζω production Vision-to-Data pipelines με Vertex AI και LLM workflows. Αναπτύσσω Python/FastAPI services για ασύγχρονη επεξεργασία εγγράφων και React interfaces για human-in-the-loop έλεγχο ποιότητας.",
+          ? "I own AADE and YPES in production. I also contribute on Justice and Cadastre digitization."
+          : "Έχω την ΑΑΔΕ και το ΥΠΕΣ σε production. Παράλληλα συνεισφέρω στην ψηφιοποίηση Δικαιοσύνης και Κτηματολογίου.",
+      href: "/work/cloudfin",
     },
     {
-      title: language === "en" ? "Front End Developer" : "Front End Developer",
+      title: "Front End Developer",
       company: "CloudFin",
-      period: language === "en" ? "11/2024 - 12/2025" : "11/2024 - 12/2025",
+      period: "11/2024 - 12/2025",
       description:
         language === "en"
-          ? "Built enterprise Angular applications with Telerik Kendo UI for B2B financial systems, delivering document workflows, data-heavy grids, and reliable API integrations in Agile product teams."
-          : "Ανέπτυξα enterprise Angular εφαρμογές με Telerik Kendo UI για B2B financial συστήματα, υλοποιώντας document workflows, σύνθετα data grids και αξιόπιστα API integrations σε Agile ομάδες προϊόντος.",
+          ? "Built enterprise Angular applications with Telerik Kendo UI for document workflows, data-heavy grids, and API integrations on CloudFin's B2B finance platform."
+          : "Έφτιαξα enterprise Angular εφαρμογές με Telerik Kendo UI για document workflows, βαριά data grids και API integrations στην B2B finance πλατφόρμα της CloudFin.",
     },
     {
-      title: language === "en" ? "Full Stack Developer" : "Full Stack Developer",
+      title: "Full Stack Developer",
       company: language === "en" ? "Self-employed" : "Αυτοαπασχολούμενος",
       period: language === "en" ? "11/2023 - Present" : "11/2023 - Παρόν",
       description:
         language === "en"
-          ? "Delivering freelance products end-to-end, including SaaS, marketplaces, and e-commerce platforms with Next.js, Supabase, and automation-first workflows tailored to each business."
-          : "Παραδίδω freelance προϊόντα end-to-end, όπως SaaS, marketplaces και e-commerce πλατφόρμες με Next.js, Supabase και automation-first λογική προσαρμοσμένη σε κάθε επιχείρηση.",
+          ? "End-to-end freelance across AI products, e-commerce, booking, contractor tools, and brand sites."
+          : "Freelance end-to-end σε AI προϊόντα, e-commerce, κρατήσεις, εργαλεία εργολάβου και brand sites.",
     },
   ]
 
@@ -45,21 +47,17 @@ export function Resume() {
         language === "en"
           ? "Coding Factory, Athens University of Economics and Business"
           : "Coding Factory, Οικονομικό Πανεπιστήμιο Αθηνών",
-      period: language === "en" ? "10/2023" : "10/2023",
+      period: "10/2023",
       description:
         language === "en"
-          ? "Received a Vocational Education and Training Certificate on a 7-month boot camp."
-          : "Έλαβα Πιστοποιητικό Επαγγελματικής Εκπαίδευσης και Κατάρτισης σε ένα 7μηνο boot camp.",
+          ? "7-month vocational boot camp. Certificate in Computer Software."
+          : "7μηνο boot camp. Πιστοποιητικό Πληροφορικής.",
     },
     {
-      degree: language === "en" ? "Merchant Marine Officer" : "Αξιωματικός Εμπορικού Ναυτικού",
+      degree: language === "en" ? "BSc, Merchant Marine Officer" : "Πτυχίο Αξιωματικού Εμπορικού Ναυτικού",
       institution:
         language === "en" ? "Merchant Marine Academy of Aspropyrgos" : "Ακαδημία Εμπορικού Ναυτικού Ασπροπύργου",
-      period: language === "en" ? "10/2019" : "10/2019",
-      description:
-        language === "en"
-          ? "Received a Merchant Marine Officer Degree - (Bachelor)"
-          : "Έλαβα πτυχίο Αξιωματικού Εμπορικού Ναυτικού - (Bachelor)",
+      period: "10/2019",
     },
   ]
 
@@ -75,9 +73,12 @@ export function Resume() {
         >
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">{t("resume.title")}</h2>
           <div className="h-1 w-20 bg-gray-200 dark:bg-gray-700 mx-auto mb-8"></div>
-          <p className="text-gray-600 dark:text-gray-300 mb-8">{t("resume.description")}</p>
+          <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-8">{t("resume.description")}</p>
           <Button asChild className="rounded-full gap-2">
-            <a href="/files/Dimitris_Palamidas_Full_Stack_AI_Engineer.pdf" download="Dimitris_Palamidas_Full_Stack_AI_Engineer.pdf">
+            <a
+              href="/files/Dimitris_Palamidas_Full_Stack_AI_Engineer.pdf"
+              download="Dimitris_Palamidas_Full_Stack_AI_Engineer.pdf"
+            >
               <Download className="h-4 w-4" />
               {t("resume.download")}
             </a>
@@ -94,7 +95,7 @@ export function Resume() {
             <div className="relative border-l-2 border-gray-200 dark:border-gray-700 pl-8 ml-3">
               {experiences.map((exp, index) => (
                 <motion.div
-                  key={index}
+                  key={`${exp.company}-${exp.period}`}
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -103,13 +104,21 @@ export function Resume() {
                 >
                   <div className="absolute -left-10 top-0 w-6 h-6 rounded-full bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700"></div>
                   <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm border border-gray-100 dark:border-gray-700">
-                    <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-1">{exp.title}</h4>
+                    <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-1">{exp.title}</h4>
                     <div className="flex flex-wrap items-center text-sm text-gray-500 dark:text-gray-400 mb-3">
                       <span>{exp.company}</span>
                       <span className="mx-2">•</span>
                       <span>{exp.period}</span>
                     </div>
-                    <p className="text-gray-600 dark:text-gray-300">{exp.description}</p>
+                    <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">{exp.description}</p>
+                    {"href" in exp && exp.href ? (
+                      <Link
+                        href={exp.href}
+                        className="inline-block mt-4 text-lg font-medium text-gray-900 dark:text-white hover:underline"
+                      >
+                        {language === "en" ? "Case study →" : "Case study →"}
+                      </Link>
+                    ) : null}
                   </div>
                 </motion.div>
               ))}
@@ -125,7 +134,7 @@ export function Resume() {
             <div className="relative border-l-2 border-gray-200 dark:border-gray-700 pl-8 ml-3">
               {education.map((edu, index) => (
                 <motion.div
-                  key={index}
+                  key={edu.institution}
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -134,13 +143,15 @@ export function Resume() {
                 >
                   <div className="absolute -left-10 top-0 w-6 h-6 rounded-full bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700"></div>
                   <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm border border-gray-100 dark:border-gray-700">
-                    <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-1">{edu.degree}</h4>
+                    <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-1">{edu.degree}</h4>
                     <div className="flex flex-wrap items-center text-sm text-gray-500 dark:text-gray-400 mb-3">
                       <span>{edu.institution}</span>
                       <span className="mx-2">•</span>
                       <span>{edu.period}</span>
                     </div>
-                    <p className="text-gray-600 dark:text-gray-300">{edu.description}</p>
+                    {"description" in edu && edu.description ? (
+                      <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">{edu.description}</p>
+                    ) : null}
                   </div>
                 </motion.div>
               ))}

@@ -4,81 +4,70 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { LanguageProvider } from "@/components/language-provider"
 import { ReactNode } from "react"
 import { Toaster } from "@/components/ui/toaster"
-import type { Metadata } from 'next'
-import { Analytics } from '@vercel/analytics/react'
-// import { GoogleAnalytics } from "./google-analytics" // Uncomment when you get your GA ID
+import type { Metadata } from "next"
+import { Analytics } from "@vercel/analytics/react"
+import { JsonLd } from "@/components/json-ld"
+import { websiteJsonLd } from "@/lib/json-ld"
+import { PERSON_JOB_TITLE, PERSON_NAME, SITE_ORIGIN } from "@/lib/site"
 
-const inter = Inter({ subsets: ["latin"] })
+const inter = Inter({ subsets: ["latin", "greek"] })
 
 export const metadata: Metadata = {
-  title: "Dimitris Palamidas | Full Stack & AI Engineer",
+  title: {
+    default: `${PERSON_NAME} | ${PERSON_JOB_TITLE}`,
+    template: `%s | ${PERSON_NAME}`,
+  },
   description:
-    "Full Stack & AI Engineer based in Athens, Greece. Building production-ready AI workflows and web products with React, Next.js, Angular, Python, FastAPI, and cloud AI services.",
+    "Full Stack & AI Engineer in Athens. At CloudFin I own AADE human verification after dual-LLM extraction, and YPES ministry-evidence evaluation. I contribute on Justice and Cadastre digitization. Freelance is separate: web products, e-commerce, and AI for founders and operators.",
   icons: {
-    icon: '/logo-gray.png',
-    shortcut: '/logo-gray.png',
-    apple: '/logo-gray.png',
+    icon: "/logo-gray.png",
+    shortcut: "/logo-gray.png",
+    apple: "/logo-gray.png",
   },
   keywords: [
     "Dimitris Palamidas",
-    "Full Stack Engineer",
-    "AI Engineer",
-    "React Developer",
-    "Angular Developer",
-    "Python Developer",
-    "FastAPI Developer",
-    "LLM Engineer",
-    "RAG Systems",
-    "Vertex AI",
-    "Gemini",
-    "Next.js Developer",
-    "Web Developer Athens",
-    "UI/UX Developer",
-    "CloudFin Developer",
-    "Greece Software Engineer",
-    "Dimitris Palamidas Portfolio",
-    "Telerik Kendo UI Developer",
-    "Supabase Developer",
-    "RxJS Developer",
-    "Angular Signals",
-    "Enterprise Web Applications",
-    "Freelance Developer Greece"
+    "Full Stack Engineer Athens",
+    "AI Engineer Greece",
+    "freelance Next.js developer",
+    "AI voice agent",
+    "RAG engineer",
+    "e-commerce Greece",
+    "Viva Wallet developer",
+    "AADE myDATA",
+    "ΕΡΓΑΝΗ software",
+    "hire freelance developer Greece",
+    "Justice",
+    "YPES",
+    "AADE",
+    "Cadastre",
+    "Κτηματολόγιο",
   ],
-  authors: [{ name: "Dimitris Palamidas" }],
-  creator: "Dimitris Palamidas",
-  publisher: "Dimitris Palamidas",
+  authors: [{ name: PERSON_NAME, url: SITE_ORIGIN }],
+  creator: PERSON_NAME,
+  publisher: PERSON_NAME,
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://dimitrispalamidas.com'),
+  metadataBase: new URL(SITE_ORIGIN),
   alternates: {
-    canonical: '/',
+    canonical: "/",
   },
   openGraph: {
-    title: "Dimitris Palamidas | Full Stack & AI Engineer",
+    title: `${PERSON_NAME} | ${PERSON_JOB_TITLE}`,
     description:
-      "Building production-ready AI workflows and full stack web products for enterprise teams and growing businesses.",
-    url: 'https://dimitrispalamidas.com',
-    siteName: 'Dimitris Palamidas Portfolio',
-    images: [
-      {
-        url: '/dimitrispalamidas.jpg',
-        width: 600,
-        height: 600,
-        alt: "Dimitris Palamidas - Full Stack & AI Engineer",
-      }
-    ],
-    locale: 'en_US',
-    type: 'website',
+      "Production AI, web products, and business software. Athens-based, booking freelance work.",
+    url: SITE_ORIGIN,
+    siteName: `${PERSON_NAME} Portfolio`,
+    locale: "en_US",
+    type: "website",
   },
   twitter: {
-    card: 'summary_large_image',
-    title: "Dimitris Palamidas | Full Stack & AI Engineer",
+    card: "summary_large_image",
+    title: `${PERSON_NAME} | ${PERSON_JOB_TITLE}`,
     description:
-      "Full-time at CloudFin and freelance for clients. Building AI-assisted and full stack products with modern web technologies.",
-    images: ['/dimitrispalamidas.jpg'],
+      "Full-time at CloudFin and freelance for clients. AI, Next.js, and Greek business software.",
   },
   robots: {
     index: true,
@@ -86,82 +75,21 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   },
   verification: {
-    google: 'r-jB5H88Xpu4DdV-CdFwBga0675VQ-fiMFQ91_KzJLE',
+    google: "r-jB5H88Xpu4DdV-CdFwBga0675VQ-fiMFQ91_KzJLE",
   },
 }
 
 export default function RootLayout({ children }: { children: ReactNode }) {
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Dimitris Palamidas",
-    "alternateName": ["Dimitris Palamidas Developer", "Dimitris Palamidas Full Stack", "Dimitris Palamidas AI Engineer"],
-    "url": "https://dimitrispalamidas.com",
-    "image": "https://dimitrispalamidas.com/dimitrispalamidas.jpg",
-    "jobTitle": "Full Stack & AI Engineer",
-    "description": "Full Stack & AI Engineer building production-ready AI workflows and full stack web products.",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Athens",
-      "addressCountry": "Greece"
-    },
-    "alumniOf": {
-      "@type": "EducationalOrganization",
-      "name": "University"
-    },
-    "knowsAbout": [
-      "React",
-      "Angular",
-      "Python",
-      "FastAPI",
-      "Large Language Models",
-      "RAG",
-      "Vertex AI",
-      "Gemini",
-      "Next.js",
-      "Front-End Development",
-      "Full Stack Development",
-      "UI/UX Design",
-      "Responsive Design",
-      "Telerik Kendo UI",
-      "Supabase",
-      "PostgreSQL",
-      "SQL Server",
-      "Docker",
-      "RxJS",
-      "Angular Signals",
-      "Git",
-      "GitHub",
-      "Agile"
-    ],
-    "sameAs": [
-      "https://github.com/dimitrispalamidas",
-      "https://linkedin.com/in/dimitrispalamidas"
-    ],
-    "worksFor": {
-      "@type": "Organization",
-      "name": "CloudFin"
-    }
-  }
-
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-        />
-      </head>
       <body className={inter.className} suppressHydrationWarning>
-        {/* Uncomment and add your GA measurement ID when ready */}
-        {/* <GoogleAnalytics measurementId="G-XXXXXXXXXX" /> */}
-        
+        <JsonLd data={websiteJsonLd()} />
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
           <LanguageProvider>
             {children}

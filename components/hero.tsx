@@ -1,7 +1,6 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { ArrowDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useLanguage } from "./language-provider"
 
@@ -21,14 +20,12 @@ export function Hero() {
           transition={{ duration: 0.5 }}
           className="max-w-3xl mx-auto text-center"
         >
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-gray-900 dark:text-white mb-6">
-            <span className="block">
-              {t("hero.greeting")} <span className="text-gray-500">Dimitris Palamidas</span>
-            </span>
-            <span className="block mt-2">{t("hero.role")}</span>
+          <h1 className="font-bold tracking-tight text-gray-900 dark:text-white mb-6">
+            <span className="block text-3xl md:text-5xl text-gray-500">Dimitris Palamidas</span>
+            <span className="block mt-2 text-4xl md:text-6xl">{t("hero.role")}</span>
           </h1>
 
-          <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+          <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
             {t("hero.description")}
           </p>
 
@@ -41,15 +38,6 @@ export function Hero() {
             </Button>
           </div>
         </motion.div>
-      </div>
-
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <a
-          href="#about"
-          className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800"
-        >
-          <ArrowDown className="h-5 w-5 text-gray-500 dark:text-gray-400" />
-        </a>
       </div>
     </section>
   )

@@ -15,7 +15,6 @@ export function Header() {
   const { theme, setTheme } = useTheme()
   const { language, setLanguage } = useLanguage()
 
-  // After mounting, we can safely show the UI
   useEffect(() => {
     setMounted(true)
   }, [])
@@ -24,14 +23,17 @@ export function Header() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10)
     }
-
-    window.addEventListener("scroll", handleScroll)
+    window.addEventListener("scroll", handleScroll, { passive: true })
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  const toggleTheme = () => {
-    setTheme(theme === "dark" ? "light" : "dark")
-  }
+  const links = [
+    { href: "/#about", en: "About", el: "Σχετικά" },
+    { href: "/#projects", en: "Work", el: "Έργα" },
+    { href: "/#skills", en: "Skills", el: "Δεξιότητες" },
+    { href: "/#resume", en: "Experience", el: "Εμπειρία" },
+    { href: "/#contact", en: "Contact", el: "Επικοινωνία" },
+  ]
 
   return (
     <header
@@ -40,136 +42,99 @@ export function Header() {
       }`}
     >
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-        <Link href="/" aria-label="Dimitris Palamidas - React & Angular Developer Homepage">
-          {mounted && (
-            <Image
-              src={theme === "dark" ? "/logo-gray2.png" : "/logo-black2.png"}
-              alt="Dimitris Palamidas - React Developer & Angular Developer Logo"
-              width={100}
-              height={100}
-              priority
-            />
-          )}
+        <Link href="/" aria-label="Dimitris Palamidas — Full Stack & AI Engineer">
+          <Image
+            src="/logo-black2.png"
+            alt="Dimitris Palamidas"
+            width={100}
+            height={100}
+            priority
+            className="dark:hidden"
+          />
+          <Image
+            src="/logo-gray2.png"
+            alt="Dimitris Palamidas"
+            width={100}
+            height={100}
+            priority
+            className="hidden dark:block"
+          />
         </Link>
 
         <div className="hidden md:flex items-center space-x-8">
           <nav className="flex items-center space-x-6">
-            <Link
-              href="#about"
-              className="text-sm font-medium text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors"
-            >
-              {language === "en" ? "About" : "Σχετικά"}
-            </Link>
-            <Link
-              href="#skills"
-              className="text-sm font-medium text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors"
-            >
-              {language === "en" ? "Skills" : "Δεξιότητες"}
-            </Link>
-            <Link
-              href="#projects"
-              className="text-sm font-medium text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors"
-            >
-              {language === "en" ? "Projects" : "Έργα"}
-            </Link>
-            <Link
-              href="#resume"
-              className="text-sm font-medium text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors"
-            >
-              {language === "en" ? "Resume" : "Βιογραφικό"}
-            </Link>
-            <Link
-              href="#contact"
-              className="text-sm font-medium text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors"
-            >
-              {language === "en" ? "Contact" : "Επικοινωνία"}
-            </Link>
+            {links.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="text-sm font-medium text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors"
+              >
+                {language === "en" ? link.en : link.el}
+              </Link>
+            ))}
           </nav>
-
-          <div className="flex items-center space-x-4">
-            <div className="h-4 w-px bg-gray-300 dark:bg-gray-700"></div>
-            <button
-              onClick={() => setLanguage(language === "en" ? "el" : "en")}
-              className="text-sm font-medium text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors"
-            >
-              {language === "en" ? "EN" : "GR"}
-            </button>
-            <button
-              onClick={toggleTheme}
-              className="text-sm font-medium text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors"
-            >
-              {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
-            </button>
-          </div>
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => setLanguage(language === "en" ? "el" : "en")}
+            className="text-sm font-medium"
+          >
+            {language === "en" ? "EN" : "EL"}
+          </Button>
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            aria-label="Toggle theme"
+          >
+            {mounted && theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+          </Button>
         </div>
 
-        <div className="md:hidden flex items-center space-x-4">
-          <button
-            onClick={toggleTheme}
-            className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors"
+        <div className="md:hidden flex items-center space-x-2">
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            aria-label="Toggle theme"
           >
-            {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
-          </button>
-          <button
-            onClick={() => setLanguage(language === "en" ? "el" : "en")}
-            className="text-sm font-medium text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors"
-          >
-            {language === "en" ? "EN" : "GR"}
-          </button>
+            {mounted && theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+          </Button>
+          <Button variant="ghost" size="sm" onClick={() => setLanguage(language === "en" ? "el" : "en")}>
+            {language === "en" ? "EN" : "EL"}
+          </Button>
           <Button
             variant="ghost"
             size="icon"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="rounded-full"
+            aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-            <span className="sr-only">Toggle menu</span>
           </Button>
         </div>
       </div>
 
-      {/* Mobile menu */}
-      {isMobileMenuOpen && (
-        <div className="md:hidden bg-white dark:bg-gray-950 shadow-lg">
-          <nav className="flex flex-col py-4">
+      {isMobileMenuOpen ? (
+        <nav className="md:hidden border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950">
+          {links.map((link) => (
             <Link
-              href="#about"
-              className="px-4 py-3 text-sm font-medium text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"
+              key={link.href}
+              href={link.href}
+              className="block px-4 py-3 text-sm font-medium text-gray-600 dark:text-gray-300"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              {language === "en" ? "About" : "Σχετικά"}
+              {language === "en" ? link.en : link.el}
             </Link>
-            <Link
-              href="#skills"
-              className="px-4 py-3 text-sm font-medium text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              {language === "en" ? "Skills" : "Δεξιότητες"}
-            </Link>
-            <Link
-              href="#projects"
-              className="px-4 py-3 text-sm font-medium text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              {language === "en" ? "Projects" : "Έργα"}
-            </Link>
-            <Link
-              href="#resume"
-              className="px-4 py-3 text-sm font-medium text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              {language === "en" ? "Resume" : "Βιογραφικό"}
-            </Link>
-            <Link
-              href="#contact"
-              className="px-4 py-3 text-sm font-medium text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              {language === "en" ? "Contact" : "Επικοινωνία"}
-            </Link>
-          </nav>
-        </div>
-      )}
+          ))}
+          <Link
+            href="/work"
+            className="block px-4 py-3 text-sm font-medium text-gray-600 dark:text-gray-300"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            {language === "en" ? "All work" : "Όλα τα έργα"}
+          </Link>
+        </nav>
+      ) : null}
     </header>
   )
 }

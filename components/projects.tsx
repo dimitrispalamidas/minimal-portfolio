@@ -1,38 +1,15 @@
 "use client"
 
-import { useState, useEffect } from "react"
-import { motion } from "framer-motion"
+import Link from "next/link"
 import Image from "next/image"
-import { ExternalLink, Github } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
+import { motion } from "framer-motion"
 import { useLanguage } from "./language-provider"
-import { projects, type ProjectCategory } from "@/lib/projects"
-
-const categoryKeys: Array<"all" | ProjectCategory> = [
-  "all",
-  "ai",
-  "business",
-  "webapp",
-  "ecommerce",
-  "landing",
-]
 
 export function Projects() {
   const { t, language } = useLanguage()
-  const [activeCategory, setActiveCategory] = useState<(typeof categoryKeys)[number]>("all")
-
-  useEffect(() => {
-    setActiveCategory("all")
-  }, [language])
-
-  const filteredProjects =
-    activeCategory === "all"
-      ? projects
-      : projects.filter((project) => project.categories.includes(activeCategory))
 
   return (
-    <section id="projects" className="py-20 bg-gray-50 dark:bg-gray-900">
+    <section id="projects" className="py-20 bg-white dark:bg-gray-950">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -43,82 +20,74 @@ export function Projects() {
         >
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">{t("projects.title")}</h2>
           <div className="h-1 w-20 bg-gray-200 dark:bg-gray-700 mx-auto mb-8"></div>
-          <p className="text-gray-600 dark:text-gray-300 mb-8">{t("projects.description")}</p>
-
-          <div className="flex flex-wrap justify-center gap-2">
-            {categoryKeys.map((key) => (
-              <Button
-                key={key}
-                variant={activeCategory === key ? "default" : "outline"}
-                onClick={() => setActiveCategory(key)}
-                className="rounded-full"
-              >
-                {t(`projects.${key}`)}
-              </Button>
-            ))}
-          </div>
+          <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">{t("projects.description")}</p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
-          {filteredProjects.map((project, index) => (
-            <motion.div
-              key={project.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.05 }}
-              viewport={{ once: true }}
-              className="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-sm border border-gray-100 dark:border-gray-700"
-            >
-              <div className="relative h-64 overflow-hidden bg-gray-100 dark:bg-gray-900">
-                {project.image ? (
-                  <Image
-                    src={project.image}
-                    alt={
-                      language === "en"
-                        ? `${project.title} - project by Dimitris Palamidas`
-                        : `${project.title} - έργο του Dimitris Palamidas`
-                    }
-                    width={1440}
-                    height={900}
-                    className="object-cover object-top w-full h-full transition-transform duration-500 hover:scale-105"
-                  />
-                ) : (
-                  <div className="flex h-full items-center justify-center px-6 text-center text-lg font-semibold text-gray-500 dark:text-gray-400">
-                    {project.title}
-                  </div>
-                )}
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">{project.title}</h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">{project.description[language]}</p>
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {project.tags[language].map((tag) => (
-                    <Badge key={tag} variant="secondary">
-                      {tag}
-                    </Badge>
-                  ))}
-                </div>
-                <div className="flex gap-4">
-                  {project.demoLink ? (
-                    <Button asChild variant="outline" size="sm" className="gap-2">
-                      <a href={project.demoLink} target="_blank" rel="noopener noreferrer">
-                        <ExternalLink className="h-4 w-4" />
-                        {t("projects.demo")}
-                      </a>
-                    </Button>
-                  ) : null}
-                  {project.githubLink ? (
-                    <Button asChild variant="outline" size="sm" className="gap-2">
-                      <a href={project.githubLink} target="_blank" rel="noopener noreferrer">
-                        <Github className="h-4 w-4" />
-                        {t("projects.code")}
-                      </a>
-                    </Button>
-                  ) : null}
-                </div>
-              </div>
-            </motion.div>
-          ))}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <Link
+            href="/work/cloudfin"
+            className="group flex flex-col bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-md transition-shadow"
+          >
+            <div className="relative h-56 bg-gray-100 dark:bg-gray-900 overflow-hidden">
+              <Image
+                src="/cloudfin.png"
+                alt="CloudFin"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-contain scale-[1.85] transition-transform duration-500 group-hover:scale-[2]"
+              />
+            </div>
+            <div className="p-6 flex flex-col flex-1">
+              <p className="text-xs font-medium uppercase tracking-wide text-gray-500 dark:text-gray-400 mb-2">
+                {language === "en" ? "Day job" : "Ημερήσια δουλειά"}
+              </p>
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">CloudFin</h3>
+              <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+                {language === "en"
+                  ? "AI for the Greek public sector: AADE, YPES, Justice, Cadastre."
+                  : "AI για το ελληνικό δημόσιο: ΑΑΔΕ, ΥΠΕΣ, Δικαιοσύνη, Κτηματολόγιο."}
+              </p>
+              <span className="mt-auto text-lg font-medium text-gray-900 dark:text-white group-hover:underline">
+                {language === "en" ? "View programs →" : "Δείτε τα προγράμματα →"}
+              </span>
+            </div>
+          </Link>
+
+          <Link
+            href="/work/personal"
+            className="group flex flex-col bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-md transition-shadow"
+          >
+            <div className="relative h-56 bg-gray-100 dark:bg-gray-900 overflow-hidden">
+              <Image
+                src="/logo-black2.png"
+                alt="Dimitris Palamidas"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-contain p-10 transition-transform duration-500 group-hover:scale-105 dark:hidden"
+              />
+              <Image
+                src="/logo-gray2.png"
+                alt="Dimitris Palamidas"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-contain p-10 transition-transform duration-500 group-hover:scale-105 hidden dark:block"
+              />
+            </div>
+            <div className="p-6 flex flex-col flex-1">
+              <p className="text-xs font-medium uppercase tracking-wide text-gray-500 dark:text-gray-400 mb-2">
+                Freelance
+              </p>
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Freelance</h3>
+              <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+                {language === "en"
+                  ? "AI products I ship myself — including CallAgent — plus shops, booking, and brand sites."
+                  : "AI προϊόντα που φτιάχνω εγώ — μαζί και το CallAgent — και καταστήματα, κρατήσεις, brand sites."}
+              </p>
+              <span className="mt-auto text-lg font-medium text-gray-900 dark:text-white group-hover:underline">
+                {language === "en" ? "View products →" : "Δείτε τα προϊόντα →"}
+              </span>
+            </div>
+          </Link>
         </div>
       </div>
     </section>

@@ -3,11 +3,10 @@
 import { motion } from "framer-motion"
 import Image from "next/image"
 import { useLanguage } from "./language-provider"
-import { useState, useEffect } from "react"
 
 export function About() {
   const { t } = useLanguage()
- 
+
   return (
     <section id="about" className="py-20 bg-gray-50 dark:bg-gray-900">
       <div className="container mx-auto px-4">
@@ -31,7 +30,7 @@ export function About() {
             className="relative max-w-md mx-auto md:mx-0"
           >
             <div className="absolute inset-0 border-2 border-gray-200 dark:border-gray-700 rounded-lg transform translate-x-4 translate-y-4"></div>
-            <div className="relative h-full w-full overflow-hidden rounded-lg bg-gray-200 dark:bg-gray-800">
+            <div className="relative overflow-hidden rounded-lg bg-gray-200 dark:bg-gray-800">
               <Image
                 src="/dimitrispalamidas.jpg"
                 alt="Dimitris Palamidas - Full Stack and AI Engineer in Athens, Greece"
@@ -50,9 +49,9 @@ export function About() {
             viewport={{ once: true }}
           >
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">{t("about.subtitle")}</h3>
-            <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">{t("about.paragraph1")}</p>
-            <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">{t("about.paragraph2")}</p>
-            <p className="text-gray-600 dark:text-gray-300 leading-relaxed">{t("about.paragraph3")}</p>
+            <p className="text-lg text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">{t("about.paragraph1")}</p>
+            <p className="text-lg text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">{t("about.paragraph2")}</p>
+            <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">{t("about.paragraph3")}</p>
           </motion.div>
         </div>
       </div>
