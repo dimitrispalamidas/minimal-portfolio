@@ -21,6 +21,8 @@ export function Hero() {
           className="mx-auto max-w-2xl text-center"
         >
           <h1 className="text-balance text-4xl font-semibold tracking-tight text-gray-900 dark:text-white md:text-5xl leading-[1.15]">
+            <span className="font-medium text-gray-500 dark:text-gray-400">{t("hero.hey")}</span>
+            {", "}
             {t("hero.greeting")} Dimitris Palamidas.
             <span className="mt-2 block">{t("hero.role")}.</span>
           </h1>
