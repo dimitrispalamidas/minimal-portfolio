@@ -12,8 +12,9 @@ type LanguageContextType = {
 
 const translations = {
   "en": {
+    "hero.greeting": "Hey, I'm",
     "hero.role": "Full Stack & AI Engineer",
-    "hero.description": "I work at CloudFin in Athens. I also take freelance projects.",
+    "hero.description": "I build AI, websites, and full products — from idea to production.",
     "hero.contact": "Get in touch",
     "hero.work": "View my work",
     "about.title": "About Me",
@@ -80,8 +81,9 @@ const translations = {
     "language": "Ελληνικά"
   },
   "el": {
+    "hero.greeting": "Γεια, είμαι ο",
     "hero.role": "Full Stack & AI Engineer",
-    "hero.description": "Δουλεύω στη CloudFin, στην Αθήνα. Αναλαμβάνω και freelance έργα.",
+    "hero.description": "Φτιάχνω AI, sites και ολοκληρωμένα προϊόντα — από την ιδέα μέχρι το production.",
     "hero.contact": "Επικοινωνία",
     "hero.work": "Δες τη δουλειά μου",
     "about.title": "Σχετικά με εμένα",
