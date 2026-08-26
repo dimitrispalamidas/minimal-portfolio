@@ -29,16 +29,13 @@ export function Hero() {
             {t("hero.description")}
           </p>
 
-          <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-8">
+          <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
             <Button onClick={scrollToContact} className="rounded-full px-8">
               {t("hero.contact")}
             </Button>
-            <a
-              href="#projects"
-              className="text-sm font-medium text-gray-900 underline-offset-4 hover:underline focus-visible:outline-none focus-visible:underline dark:text-white"
-            >
-              {t("hero.work")}
-            </a>
+            <Button variant="outline" asChild className="rounded-full px-8">
+              <a href="#projects">{t("hero.work")}</a>
+            </Button>
           </div>
         </motion.div>
       </div>
