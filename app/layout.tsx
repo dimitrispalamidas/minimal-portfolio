@@ -67,11 +67,7 @@ export const metadata: Metadata = {
       "Full-time at CloudFin and freelance for clients. AI, Next.js, and Greek business software.",
   },
   robots: {
-    index: true,
-    follow: true,
     googleBot: {
-      index: true,
-      follow: true,
       "max-video-preview": -1,
       "max-image-preview": "large",
       "max-snippet": -1,

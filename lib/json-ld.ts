@@ -127,7 +127,7 @@ export function workIndexJsonLd(path: WorkIndexPath = "/work") {
   }
 }
 
-export function workJsonLd(slug: string, title: string, description: string) {
+export function workJsonLd(slug: string, title: string, description: string, image?: string) {
   const url = `${SITE_ORIGIN}/work/${slug}`
   return {
     "@context": "https://schema.org",
@@ -160,6 +160,7 @@ export function workJsonLd(slug: string, title: string, description: string) {
         name: title,
         url,
         description,
+        ...(image ? { image: `${SITE_ORIGIN}${image}` } : {}),
         author: { "@id": PERSON_ID },
         creator: { "@id": PERSON_ID },
         inLanguage: "en",
