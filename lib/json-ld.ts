@@ -1,4 +1,4 @@
-import { gridProjects } from "@/lib/projects"
+import { gridProjects, personalProjects } from "@/lib/projects"
 import {
   GITHUB_URL,
   LINKEDIN_URL,
@@ -107,15 +107,19 @@ export function homeJsonLd() {
   }
 }
 
-export function workIndexJsonLd() {
+type WorkIndexPath = "/work" | "/work/personal"
+
+export function workIndexJsonLd(path: WorkIndexPath = "/work") {
+  const listed = path === "/work/personal" ? personalProjects() : gridProjects()
+
   return {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    name: "Selected work — Dimitris Palamidas",
-    url: `${SITE_ORIGIN}/work`,
+    name: path === "/work/personal" ? "Freelance — Dimitris Palamidas" : "Selected work — Dimitris Palamidas",
+    url: `${SITE_ORIGIN}${path}`,
     isPartOf: { "@id": WEBSITE_ID },
     about: { "@id": PERSON_ID },
-    hasPart: gridProjects().map((project) => ({
+    hasPart: listed.map((project) => ({
       "@type": "CreativeWork",
       name: project.title,
       url: `${SITE_ORIGIN}/work/${project.slug}`,

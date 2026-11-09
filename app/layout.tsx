@@ -51,9 +51,6 @@ export const metadata: Metadata = {
     telephone: false,
   },
   metadataBase: new URL(SITE_ORIGIN),
-  alternates: {
-    canonical: "/",
-  },
   openGraph: {
     title: `${PERSON_NAME} | ${PERSON_JOB_TITLE}`,
     description:

@@ -1,4 +1,4 @@
-export const SITE_ORIGIN = "https://dimitrispalamidas.com" as const
+export const SITE_ORIGIN = "https://www.dimitrispalamidas.com" as const
 
 export const PERSON_NAME = "Dimitris Palamidas"
 export const PERSON_JOB_TITLE = "Full Stack & AI Engineer"

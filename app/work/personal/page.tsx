@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 export default function PersonalWorkPage() {
   return (
     <div className="min-h-screen bg-white dark:bg-gray-950">
-      <JsonLd data={workIndexJsonLd()} />
+      <JsonLd data={workIndexJsonLd("/work/personal")} />
       <Header />
       <WorkIndex lane="personal" />
       <Footer />

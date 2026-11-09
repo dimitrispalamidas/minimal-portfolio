@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import { Header } from "@/components/header"
 import { Hero } from "@/components/hero"
 import { About } from "@/components/about"
@@ -8,6 +9,12 @@ import { Contact } from "@/components/contact"
 import { Footer } from "@/components/footer"
 import { JsonLd } from "@/components/json-ld"
 import { homeJsonLd } from "@/lib/json-ld"
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "/",
+  },
+}
 
 export default function Home() {
   return (
